@@ -9,7 +9,7 @@ import Basket from './components/Basket'
 class App extends Component {
   state = {
     vehicles : [],
-    basket: []
+    basketOrder: []
   }
 
   getVehicles = async() => {
@@ -47,10 +47,9 @@ class App extends Component {
     const rentVehicle = { name: nameVehicle,
                           price: priceVehicle }
 
-    const arrayToPush = this.state.basket
-    arrayToPush.push(rentVehicle)
-    this.setState({basket: arrayToPush})
-    console.log(arrayToPush)
+    const newStateToPush = this.state.basketOrder
+    newStateToPush.push(rentVehicle)
+    this.setState({basketOrder: newStateToPush})
   }
 
 
@@ -61,10 +60,9 @@ class App extends Component {
     
     return (
       <div className="App">
-        <button onClick={this.handleTest}></button>
         <div className='content'>
         <Vehicles data={this.state.vehicles} handleClick={this.handleClickRent}/>
-        <Basket data={this.state.basket}/>
+        <Basket data={this.state.basketOrder}/>
         </div>
       </div>
     )

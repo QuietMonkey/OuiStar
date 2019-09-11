@@ -1,22 +1,32 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import BasketVehicle from './BasketVehicle'
 
-class Basket extends Component{
+class Basket extends Component {
 
-    componentDidUpdate(){
-        console.log(this.props.data)
+    renderVehicles = () => this.props.data.map((one) => <BasketVehicle name={one.name} price={one.price} />)
+
+    renderTotalPrice = () => {
+        let price = 0
+        this.props.data.map((one) => price = price + Number(one.price))
+        return(
+            <div>
+            <h4>Total Price:</h4>
+            <h2 className='totalPrice'>{price + '$'}</h2>
+            </div>
+        )
     }
 
-    render(){
+    render() {
 
-    
-    return(
-        <div>
-
-            <h2>{this.props.data}</h2>
-        </div>
-    )
-}
+        return (
+            <div className='Basket'>
+                <div className='items'>
+                    {this.renderVehicles()}
+                </div>
+                {this.renderTotalPrice()}
+            </div>
+        )
+    }
 }
 
 export default Basket

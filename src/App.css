@@ -6,10 +6,52 @@
   display: flex;
 }
 
+.Basket{
+  width: 20vw;
+  background: rgb(88, 88, 88);
+  border-radius: 25px;
+  box-shadow: 4px 4px 8px inset rgba(0,0,0,.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.items{
+  height: 85vh;
+  overflow: scroll;
+}
+
+.deleteRent{
+  display: flex;
+  justify-content: center;
+}
+
+.deleteRent > button {
+  height: 100%;
+  width: inherit;
+  align-self: center;
+}
+
+.BasketVehicle {
+  border-radius: 25px;
+  box-shadow: -15px 8px 18px inset rgba(255, 255, 255, 0.068);
+}
+
+.BasketVehicle > h2{
+  margin-bottom: 0;
+}
+
+.totalPrice{
+  width: 100%;
+  color: white;
+}
+
 .Vehicles{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  width: 80vw;
+  height: 100vh;
+  overflow: scroll;
 }
 
 .Vehicle{
@@ -17,7 +59,7 @@
   border-radius: 25px;
   box-shadow: 4px 4px 8px inset rgba(0,0,0,.2);
   margin: 2px;
-  width: 20vw;
+  width: 20%;
 }
 
 .Vehicle > h2 {

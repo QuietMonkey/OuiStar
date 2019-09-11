@@ -11,7 +11,7 @@ const Vehicle = ({name, type, price, handleClick}) => {
             <h2>{name}</h2>
             <h4>{type}</h4>
             <div className='prices'>
-                <h3>{price === 'unknown' ? "Véhicle not disponible" : price + '$'}</h3>
+                <h3>{price === 'unknown' ? "Vehicle not available" : price + '$'}</h3>
                 {price === 'unknown' ? null : <button onClick={handleClickRent}>Rent</button>}
             </div>
         </div>
