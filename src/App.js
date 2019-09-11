@@ -47,10 +47,13 @@ class App extends Component {
     const rentVehicle = { name: nameVehicle,
                           price: priceVehicle }
 
-    this.setState(state => { const basket = state.basket.push(rentVehicle) })
+    const arrayToPush = this.state.basket
+    arrayToPush.push(rentVehicle)
+    this.setState({basket: arrayToPush})
+    console.log(arrayToPush)
   }
 
-  handleTest = () => console.log(this.state)
+
  
 
   render() {
