@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 import './App.css'
+import Vehicles from './components/Vehicles'
 
 class App extends Component {
   state = {
@@ -44,7 +45,7 @@ class App extends Component {
     
     return (
       <div className="App">
-        <h1>Clean</h1>
+        <Vehicles data={this.state.vehicles}/>
       </div>
     )
   }
