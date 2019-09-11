@@ -1,3 +1,8 @@
+In case of problems with node modules use :
+
+### `rm -rf node_modules && npm i && npm start`
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
