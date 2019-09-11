@@ -11,6 +11,7 @@ class App extends Component {
   getVehicles = async() => {
     try {
       let arrayResults = []
+
       const response = await axios.get('https://swapi.co/api/vehicles/?page=1')
       this.createUnikArray(response.data.results, arrayResults)
 
@@ -23,7 +24,7 @@ class App extends Component {
       const response4 = await axios.get('https://swapi.co/api/vehicles/?page=4')
       this.createUnikArray(response4.data.results, arrayResults)
 
-      console.log(arrayResults)
+      this.setState({vehicles: arrayResults})
 
     } catch (error) {
       console.error(error)
@@ -39,6 +40,8 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state)
+    
     return (
       <div className="App">
         <h1>Clean</h1>
