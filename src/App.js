@@ -4,9 +4,12 @@ import axios from 'axios'
 import './App.css'
 import Vehicles from './components/Vehicles'
 
+import Basket from './components/Basket'
+
 class App extends Component {
   state = {
-    vehicles : []
+    vehicles : [],
+    basket: []
   }
 
   getVehicles = async() => {
@@ -40,12 +43,26 @@ class App extends Component {
     this.getVehicles()
   }
 
+  handleClickRent = async(nameVehicle, priceVehicle) => {
+    const rentVehicle = { name: nameVehicle,
+                          price: priceVehicle }
+
+    this.setState(state => { const basket = state.basket.push(rentVehicle) })
+  }
+
+  handleTest = () => console.log(this.state)
+ 
+
   render() {
     console.log(this.state)
     
     return (
       <div className="App">
-        <Vehicles data={this.state.vehicles}/>
+        <button onClick={this.handleTest}></button>
+        <div className='content'>
+        <Vehicles data={this.state.vehicles} handleClick={this.handleClickRent}/>
+        <Basket data={this.state.basket}/>
+        </div>
       </div>
     )
   }

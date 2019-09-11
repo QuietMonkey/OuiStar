@@ -1,9 +1,22 @@
-import React from 'react'
+import React, {Component} from 'react'
+import BasketVehicle from './BasketVehicle'
 
-const Basket = () => {
+class Basket extends Component{
+
+    componentDidUpdate(){
+        console.log(this.props.data)
+    }
+
+    render(){
+
+    
     return(
-        <h1>TEST</h1>
+        <div>
+
+            <h2>{this.props.data}</h2>
+        </div>
     )
+}
 }
 
 export default Basket

@@ -1,6 +1,10 @@
 import React from 'react'
 
-const Vehicle = ({name, type, price}) => {
+const Vehicle = ({name, type, price, handleClick}) => {
+
+    const handleClickRent = () => {
+        {handleClick(name, price)}
+    }
 
     return(
         <div className='Vehicle'>
@@ -8,7 +12,7 @@ const Vehicle = ({name, type, price}) => {
             <h4>{type}</h4>
             <div className='prices'>
                 <h3>{price === 'unknown' ? "Véhicle not disponible" : price + '$'}</h3>
-                <button>Rent</button>
+                {price === 'unknown' ? null : <button onClick={handleClickRent}>Rent</button>}
             </div>
         </div>
     )
