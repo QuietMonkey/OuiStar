@@ -1,15 +1,18 @@
 .App {
   text-align: center;
-}
-
-.content{
   display: flex;
+  background-image: url(https://backgroundcheckall.com/wp-content/uploads/2017/12/star-wars-rebels-background-4.jpg);
+  background-color: rgba(73, 52, 52, 0.8);
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position-x: -10.5vw;
+  background-position-y: -2vh;
 }
 
 .Basket{
   width: 20vw;
-  background: rgb(88, 88, 88);
-  border-radius: 25px;
+  background: rgba(88, 88, 88, .7);
+  /* border-radius: 25px; */
   box-shadow: 4px 4px 8px inset rgba(0,0,0,.2);
   display: flex;
   flex-direction: column;
@@ -55,7 +58,7 @@
 }
 
 .Vehicle{
-  background: rgb(231, 231, 231);
+  background: rgba(231, 231, 231, .6);
   /* border-radius: 25px; */
   box-shadow: 4px 4px 8px inset rgba(0,0,0,.2);
   margin: 2px;
@@ -87,4 +90,5 @@
 
 .modal{
   width: 35vw;
+  height: 55vh;
 }

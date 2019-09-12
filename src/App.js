@@ -31,7 +31,7 @@ class App extends Component {
 
       const response4 = await axios.get('https://swapi.co/api/vehicles/?page=4')
       this.createUnikArray(response4.data.results, arrayResults)
-
+      arrayResults.splice(arrayResults.length -3, 3)
       this.setState({vehicles: arrayResults})
 
     } catch (error) {
@@ -56,6 +56,12 @@ class App extends Component {
     this.setState({basketOrder: newStateToPush})
   }
 
+  handleClickCancel = (index) => {
+    const newStatetoSplice = this.state.basketOrder
+    newStatetoSplice.splice(index, 1)
+    this.setState({basketOrder: newStatetoSplice})
+  }
+
   onOpenModal = (index) => {
     this.setState({ selectedVehicle: this.state.vehicles[index]})
     this.setState({ open: true })
@@ -71,7 +77,7 @@ class App extends Component {
     
     return (
       <div className="App">
-        <div className='content'>
+      
         <Modal open={this.state.open} onClose={this.onCloseModal} center>
           <ModalVehicle name={this.state.selectedVehicle.name}
                         model={this.state.selectedVehicle.model}
@@ -85,8 +91,8 @@ class App extends Component {
                         price={this.state.selectedVehicle.cost_in_credits} />
         </Modal>
         <Vehicles data={this.state.vehicles} handleClick={this.handleClickRent} openModal={this.onOpenModal}/>
-        <Basket data={this.state.basketOrder}/>
-        </div>
+        <Basket data={this.state.basketOrder} handleClick={this.handleClickCancel}/>
+
       </div>
     )
   }

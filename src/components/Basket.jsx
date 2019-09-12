@@ -3,7 +3,10 @@ import BasketVehicle from './BasketVehicle'
 
 class Basket extends Component {
 
-    renderVehicles = () => this.props.data.map((one) => <BasketVehicle name={one.name} price={one.price} />)
+    renderVehicles = () => this.props.data.map((one, i) => <BasketVehicle name={one.name} 
+                                                                       price={one.price} 
+                                                                       handleClick={this.props.handleClick}
+                                                                       index={i}/>)
 
     renderTotalPrice = () => {
         let price = 0
