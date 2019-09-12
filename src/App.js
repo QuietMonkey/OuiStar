@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import Modal from 'react-responsive-modal';
 
 import './App.css'
 import Vehicles from './components/Vehicles'
 
 import Basket from './components/Basket'
+import ModalVehicle from './components/ModalVehicle';
 
 class App extends Component {
   state = {
+    open: false,
     vehicles : [],
+    selectedVehicle: [],
     basketOrder: []
   }
 
@@ -52,8 +56,15 @@ class App extends Component {
     this.setState({basketOrder: newStateToPush})
   }
 
-
+  onOpenModal = (index) => {
+    this.setState({ selectedVehicle: this.state.vehicles[index]})
+    this.setState({ open: true })
+  }
  
+  onCloseModal = () => {
+    this.setState({ open: false })
+  }
+
 
   render() {
     console.log(this.state)
@@ -61,7 +72,19 @@ class App extends Component {
     return (
       <div className="App">
         <div className='content'>
-        <Vehicles data={this.state.vehicles} handleClick={this.handleClickRent}/>
+        <Modal open={this.state.open} onClose={this.onCloseModal} center>
+          <ModalVehicle name={this.state.selectedVehicle.name}
+                        model={this.state.selectedVehicle.model}
+                        type={this.state.selectedVehicle.vehicle_class}
+                        length={this.state.selectedVehicle.length}
+                        manufacturer={this.state.selectedVehicle.manufacturer}
+                        passenger={this.state.selectedVehicle.passengers}
+                        crew={this.state.selectedVehicle.crew}
+                        speed={this.state.selectedVehicle.max_atmosphering_speed}
+                        autonomy={this.state.selectedVehicle.consumables}
+                        price={this.state.selectedVehicle.cost_in_credits} />
+        </Modal>
+        <Vehicles data={this.state.vehicles} handleClick={this.handleClickRent} openModal={this.onOpenModal}/>
         <Basket data={this.state.basketOrder}/>
         </div>
       </div>

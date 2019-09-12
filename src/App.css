@@ -56,10 +56,15 @@
 
 .Vehicle{
   background: rgb(231, 231, 231);
-  border-radius: 25px;
+  /* border-radius: 25px; */
   box-shadow: 4px 4px 8px inset rgba(0,0,0,.2);
   margin: 2px;
-  width: 20%;
+  width: 22%;
+  cursor: pointer;
+}
+
+.Vehicle:hover{
+  background: rgb(255, 255, 255);
 }
 
 .Vehicle > h2 {
@@ -74,4 +79,12 @@
 .prices{
   display: flex;
   justify-content: center;
+}
+
+.modalTop{
+  display: flex;
+}
+
+.modal{
+  width: 35vw;
 }
