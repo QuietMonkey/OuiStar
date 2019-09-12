@@ -2,10 +2,6 @@ import React from 'react'
 
 const Vehicle = ({index, name, type, price, handleClick, openModal}) => {
 
-    const handleClickRent = () => {
-        {handleClick(name, price)}
-    }
-
     const handleOpenModal = () => {
         openModal(index)
     }
@@ -15,8 +11,7 @@ const Vehicle = ({index, name, type, price, handleClick, openModal}) => {
             <h2>{name}</h2>
             <h4>{type}</h4>
             <div className='prices'>
-                <h3>{price === 'unknown' ? "Vehicle not available" : price + '$'}</h3>
-                {price === 'unknown' ? null : <button onClick={handleClickRent}>Rent</button>}
+                <h3>{price === 'unknown' ? "Vehicle not available" : price + ' R€p'}</h3>
             </div>
         </div>
     )

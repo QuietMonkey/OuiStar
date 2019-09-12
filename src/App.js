@@ -12,6 +12,7 @@ class App extends Component {
   state = {
     open: false,
     vehicles : [],
+    displayVehicles: [],
     selectedVehicle: [],
     basketOrder: []
   }
@@ -39,12 +40,17 @@ class App extends Component {
     }
   }
 
+  displayVehicles = () => {
+    this.setState({displayVehicles: this.state.vehicles})
+  }
+
   createUnikArray = (data, array) => {
     data.map((one)=> array.push(one))
   }
 
-  componentDidMount(){
-    this.getVehicles()
+  componentDidMount = async () =>{
+    await this.getVehicles()
+    this.displayVehicles()
   }
 
   handleClickRent = async(nameVehicle, priceVehicle) => {
@@ -54,6 +60,7 @@ class App extends Component {
     const newStateToPush = this.state.basketOrder
     newStateToPush.push(rentVehicle)
     this.setState({basketOrder: newStateToPush})
+    this.onCloseModal()
   }
 
   handleClickCancel = (index) => {
@@ -71,28 +78,42 @@ class App extends Component {
     this.setState({ open: false })
   }
 
+  handleSearch = (e) => {
+    const results = this.state.vehicles.filter(vehicle => vehicle.name.toLowerCase().includes(e.target.value.toLowerCase()))
+    this.setState({displayVehicles: results})
+  }
+
 
   render() {
     console.log(this.state)
     
     return (
       <div className="App">
-      
-        <Modal open={this.state.open} onClose={this.onCloseModal} center>
-          <ModalVehicle name={this.state.selectedVehicle.name}
-                        model={this.state.selectedVehicle.model}
-                        type={this.state.selectedVehicle.vehicle_class}
-                        length={this.state.selectedVehicle.length}
-                        manufacturer={this.state.selectedVehicle.manufacturer}
-                        passenger={this.state.selectedVehicle.passengers}
-                        crew={this.state.selectedVehicle.crew}
-                        speed={this.state.selectedVehicle.max_atmosphering_speed}
-                        autonomy={this.state.selectedVehicle.consumables}
-                        price={this.state.selectedVehicle.cost_in_credits} />
-        </Modal>
-        <Vehicles data={this.state.vehicles} handleClick={this.handleClickRent} openModal={this.onOpenModal}/>
-        <Basket data={this.state.basketOrder} handleClick={this.handleClickCancel}/>
+        <div className='header'>
+          <input onChange={this.handleSearch} placeholder='Search by name..'></input>
+          <div className='logo'>
+            <h1>WE.STAR</h1>
+            <h2>THE BEST OF THE REBELLION</h2>
+          </div>
+        </div>
+        <div className='content'>
+          <Modal open={this.state.open} onClose={this.onCloseModal} center>
+            <ModalVehicle name={this.state.selectedVehicle.name}
+                          model={this.state.selectedVehicle.model}
+                          type={this.state.selectedVehicle.vehicle_class}
+                          length={this.state.selectedVehicle.length}
+                          manufacturer={this.state.selectedVehicle.manufacturer}
+                          passenger={this.state.selectedVehicle.passengers}
+                          crew={this.state.selectedVehicle.crew}
+                          speed={this.state.selectedVehicle.max_atmosphering_speed}
+                          autonomy={this.state.selectedVehicle.consumables}
+                          price={this.state.selectedVehicle.cost_in_credits} 
+                          handleClick={this.handleClickRent} />
+          </Modal>
 
+          <Vehicles data={this.state.displayVehicles} openModal={this.onOpenModal}/>
+          <Basket data={this.state.basketOrder} handleClick={this.handleClickCancel}/>
+        </div>
       </div>
     )
   }

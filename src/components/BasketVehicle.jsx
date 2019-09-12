@@ -8,8 +8,8 @@ const BasketVehicle = ({name, price, handleClick, index}) => {
         <div className='BasketVehicle'>
             <h2>{name}</h2>
             <div className='deleteRent'>
-                <h3>{price + '$'}</h3>
-                <button onClick={handleClickCancel}>Delete</button>
+                <h3>{price + ' R€p'}</h3>
+                <button onClick={handleClickCancel}>Cancel</button>
             </div>
         </div>
     )

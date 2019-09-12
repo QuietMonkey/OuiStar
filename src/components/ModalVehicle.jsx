@@ -1,6 +1,9 @@
 import React from 'react'
 
-const ModalVehicle = ({name, model, type, length, manufacturer, passenger, crew, speed, autonomy, price}) =>{
+const ModalVehicle = ({name, model, type, length, manufacturer, passenger, crew, speed, autonomy, price, handleClick}) =>{
+    const handleClickRent = () => {
+        {handleClick(name, price)}
+    }
     return(
         <div className='ModalVehicle'>
             <div className='modalTop'>
@@ -21,7 +24,8 @@ const ModalVehicle = ({name, model, type, length, manufacturer, passenger, crew,
             </div>
 
             <div className='modalRent'>
-                <h1>{price}</h1>
+                <h1>{price === 'unknown' ? "Vehicle not available" : price + ' R€p'}</h1>
+                {price === 'unknown' ? null : <button onClick={handleClickRent}>Rent</button>}
             </div>
         </div>
     )

@@ -14,7 +14,7 @@ class Basket extends Component {
         return(
             <div>
             <h4>Total Price:</h4>
-            <h2 className='totalPrice'>{price + '$'}</h2>
+            <h2 className='totalPrice'>{price + ' R€p'}</h2>
             </div>
         )
     }
