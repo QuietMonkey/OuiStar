@@ -20,7 +20,11 @@
   height: 50%;
   margin: 19px;
   border-radius: 8px;
-} 
+}
+
+.inputSearch::placeholder{
+  color: #ba2737;
+}
 
 .spaceShips{
   background-image: url(https://sacredicon.files.wordpress.com/2019/02/starfighters-e1549479582387.jpg?w=789);
@@ -87,10 +91,19 @@
   justify-content: center;
 }
 
-.deleteRent > button {
+.cancelButton{
   height: 100%;
   width: inherit;
   align-self: center;
+  background: #ba2737;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: 14px;
+}
+
+.cancelButton:hover{
+  opacity: .8;
 }
 
 .BasketVehicle {
@@ -262,4 +275,9 @@
   font-size:1.5em;
   border-radius: 8px;
   margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.addToCart:hover{
+  opacity: .8;
 }
