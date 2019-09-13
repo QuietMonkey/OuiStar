@@ -138,7 +138,8 @@
 }
 
 .VehicleType{
-  background-image: url(https://i7.pngguru.com/preview/885/281/105/computer-icons-spacecraft-clip-art-rocket.jpg) 
+  background-image: url(https://i7.pngguru.com/preview/885/281/105/computer-icons-spacecraft-clip-art-rocket.jpg);
+  filter: contrast(2);
 }
 
 .Speed{
