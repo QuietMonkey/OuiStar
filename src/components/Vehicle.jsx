@@ -11,7 +11,7 @@ const Vehicle = ({index, name, type, price, passengers, openModal}) => {
             <h2>{name}</h2>
             <h4>{type}</h4>
             <div className='passengers'>
-            <span className='iconPassenger'></span>
+            <span className='icon Passenger'></span>
             <h2>{passengers}</h2>
             </div>
                 <h3>{price === 'unknown' ? "Vehicle not available" : price + ' R€p'}</h3>

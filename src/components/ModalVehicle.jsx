@@ -1,32 +1,47 @@
 import React from 'react'
 
-const ModalVehicle = ({name, model, type, length, manufacturer, passenger, crew, speed, autonomy, price, handleClick}) =>{
+const ModalVehicle = ({ name, model, type, length, manufacturer, passenger, crew, speed, autonomy, price, handleClick }) => {
     const handleClickRent = () => {
-        {handleClick(name, price)}
+        { handleClick(name, price) }
     }
-    return(
+    return (
         <div className='ModalVehicle'>
-            <div className='modalTop'>
-                <div className='modal Head'>
-                    <h1>{name}</h1>
-                    <h3>{manufacturer}</h3>
-                    <h3>{model}</h3>
-                    <h2>{passenger}</h2>
+
+            <h1>{name}</h1>
+            <div className='modalHead'>
+                <h2>{model}</h2>
+                <h2>{manufacturer}</h2> 
+            </div>
+
+            <div className='modalCards'>
+                <div className='modalCard left'>
+                    <span className='icon VehicleType'></span>
+                    <h3>{type}</h3> <br/>
+
+                    <span className='icon Length'></span>
+                    <h3>{length}</h3> <br/>
+
+                    <span className='icon Speed'></span>
+                    <h3>{speed}</h3> <br/>
                 </div>
 
-                <div className='modal Spec'>
-                    <h4>{type}</h4> 
-                    <h4>{length}</h4>
-                    <h2>{crew}</h2>
-                    <h3>{speed}</h3>
-                    <h3>{autonomy}</h3>
+                <span></span>
+
+                <div className='modalCard right'>
+                    <span className='icon Passenger'></span>
+                    <h3>{passenger}</h3> <br/>
+
+                    <span className='icon Crew'></span>
+                    <h3>{crew}</h3> <br/>
+
+                    <span className='icon Autonomy'></span>
+                    <h3>{autonomy}</h3> <br/>
                 </div>
             </div>
 
-            <div className='modalRent'>
-                <h1>{price === 'unknown' ? "Vehicle not available" : price + ' R€p'}</h1>
-                {price === 'unknown' ? null : <button onClick={handleClickRent}>Rent</button>}
-            </div>
+            <h1>{price === 'unknown' ? "Vehicle not available" : price + ' R€p'}</h1>
+            {price === 'unknown' ? null : <button className='addToCart' onClick={handleClickRent}>Add to cart</button>}
+
         </div>
     )
 }

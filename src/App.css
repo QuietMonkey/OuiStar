@@ -1,9 +1,3 @@
-.App::-webkit-scrollbar {
-  display: none;
-}
-
-.App{ overflow: -moz-scrollbars-none; }
-
 .App {
   text-align: center;
   background-image: url(https://backgroundcheckall.com/wp-content/uploads/2017/12/star-wars-rebels-background-4.jpg);
@@ -132,12 +126,36 @@
   justify-content: center;
 }
 
-.iconPassenger{
-  display: block;
-  background-image: url(https://image.flaticon.com/icons/png/512/1042/1042311.png);
+.icon{
+  display: inline-block;
   height: 30px;
   width: 30px;
   background-size: cover;
+}
+
+.Passenger{
+  background-image: url(https://image.flaticon.com/icons/png/512/1042/1042311.png);
+}
+
+.VehicleType{
+  background-image: url(https://i7.pngguru.com/preview/885/281/105/computer-icons-spacecraft-clip-art-rocket.jpg) 
+}
+
+.Speed{
+  background-image: url(https://www.pngfind.com/pngs/m/530-5305416_speed-icon-png-clock-timex-transparent-png.png)
+}
+
+.Length{
+  background-image: url(https://cdn4.iconfinder.com/data/icons/ios-edge-glyph-4/25/Expand-Horizontally-512.png);
+  filter: brightness(0)
+}
+
+.Autonomy{
+  background-image: url(https://cdn4.iconfinder.com/data/icons/business-vol-4-4/96/Clock-512.png);
+}
+
+.Crew{
+  background-image: url(https://image.flaticon.com/icons/png/512/130/130091.png)
 }
 
 .passengers > h2{
@@ -153,12 +171,71 @@
   margin: 0;
 }
 
-
-.modalTop{
+.ModalVehicle{
   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.modal{
-  width: 35vw;
-  height: 55vh;
+.ModalVehicle > h1 {
+  font-size: 46px;
+  color: #ba2737;
+  margin-bottom: 0px;
+  margin-top: 30px;
+}
+
+.modalHead{
+  display: flex;
+  color: rgb(85, 60, 60)
+}
+
+.modalHead > h2 {
+  margin-top: 0px;
+  margin-bottom: 60px;
+  margin-inline: 8px;
+}
+
+.modalCards{
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 30px;
+}
+
+.modalCard{
+  width: 18vw;
+  height: 22vh;
+  margin-top: 8%;
+}
+
+.left{
+  margin-right: 1.2rem;
+}
+
+.right{
+  margin-left: 1.2rem;
+}
+
+.modalCards > span {
+  width: 2px;
+  height: 100%;
+  background: #ba2737;
+}
+
+.modalCard > h3 {
+  display: inline-block;
+  font-size: 24px;
+  margin: 8px;
+  position: relative;
+  top: -6px;
+  margin-left: 10px;
+}
+
+.addToCart{
+  background: #ba2737;
+  width: 230px;
+  height:45px;
+  color: wheat;
+  font-size:1.5em;
+  border-radius: 8px;
+  margin-bottom: 30px;
 }
