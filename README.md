@@ -1,3 +1,9 @@
+Made with the force, not by gungans. Prettier on Mozilla FireFox.
+
+## DEMO
+
+https://focused-euclid-9538ba.netlify.com/
+
 In case of problems with node modules use :
 
 ### `rm -rf node_modules && npm i && npm start`
