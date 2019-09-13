@@ -31,7 +31,7 @@
     background-blend-mode: screen;
     background-position-y: -25px;
     background-repeat: repeat-y;
-    animation: spaceShipsY 6s ease-in-out infinite;
+    animation: spaceShipsY 6s ease-out infinite;
 }
 
 @keyframes spaceShipsY{
