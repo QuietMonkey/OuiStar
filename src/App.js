@@ -17,27 +17,38 @@ class App extends Component {
     basketOrder: []
   }
 
-  getVehicles = async() => {
+  getVehicles = async(scope) => {
+    let arrayResults = []
     try {
-      let arrayResults = []
 
-      const response = await axios.get('https://swapi.co/api/vehicles/?page=1')
-      this.createUnikArray(response.data.results, arrayResults)
-
-      const response2 = await axios.get('https://swapi.co/api/vehicles/?page=2')
-      this.createUnikArray(response2.data.results, arrayResults)
-
-      const response3 = await axios.get('https://swapi.co/api/vehicles/?page=3')
-      this.createUnikArray(response3.data.results, arrayResults)
-
-      const response4 = await axios.get('https://swapi.co/api/vehicles/?page=4')
-      this.createUnikArray(response4.data.results, arrayResults)
-      arrayResults.splice(arrayResults.length -3, 3)
-      this.setState({vehicles: arrayResults})
-
-    } catch (error) {
-      console.error(error)
-    }
+      await axios.get('https://swapi.co/api/vehicles/')
+        .then(function (response) {
+          // handle success
+          scope.setState({vehicles: response.data.results})
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+      } catch (error) {
+        console.error(error)
+      }
+      
+      // const response = await axios.get('https://swapi.co/api/vehicles/?page=1')
+      // this.createUnikArray(response.data.results, arrayResults)
+      
+      // const response2 = await axios.get('https://swapi.co/api/vehicles/?page=2')
+      // this.createUnikArray(response2.data.results, arrayResults)
+      
+      // const response3 = await axios.get('https://swapi.co/api/vehicles/?page=3')
+      // this.createUnikArray(response3.data.results, arrayResults)
+      
+      // const response4 = await axios.get('https://swapi.co/api/vehicles/?page=4')
+      // this.createUnikArray(response4.data.results, arrayResults)
+      // arrayResults.splice(arrayResults.length -3, 3)
+      // this.setState({vehicles: arrayResults})
+      
+      this.displayVehicles()
   }
 
   displayVehicles = () => {
@@ -48,9 +59,8 @@ class App extends Component {
     data.map((one)=> array.push(one))
   }
 
-  componentDidMount = async () =>{
-    await this.getVehicles()
-    this.displayVehicles()
+  componentDidMount = () =>{
+    this.getVehicles(this)
   }
 
   handleClickRent = async(nameVehicle, priceVehicle) => {

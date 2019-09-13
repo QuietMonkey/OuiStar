@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Vehicle = ({index, name, type, price, handleClick, openModal}) => {
+const Vehicle = ({index, name, type, price, passengers, openModal}) => {
 
     const handleOpenModal = () => {
         openModal(index)
@@ -10,9 +10,11 @@ const Vehicle = ({index, name, type, price, handleClick, openModal}) => {
         <div className='Vehicle' onClick={handleOpenModal}>
             <h2>{name}</h2>
             <h4>{type}</h4>
-            <div className='prices'>
-                <h3>{price === 'unknown' ? "Vehicle not available" : price + ' R€p'}</h3>
+            <div className='passengers'>
+            <span className='iconPassenger'></span>
+            <h2>{passengers}</h2>
             </div>
+                <h3>{price === 'unknown' ? "Vehicle not available" : price + ' R€p'}</h3>
         </div>
     )
 }

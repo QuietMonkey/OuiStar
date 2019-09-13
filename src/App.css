@@ -127,10 +127,32 @@
   font-size: .9em;
 }
 
+.passengers{
+  display: flex;
+  justify-content: center;
+}
+
+.iconPassenger{
+  display: block;
+  background-image: url(https://image.flaticon.com/icons/png/512/1042/1042311.png);
+  height: 30px;
+  width: 30px;
+  background-size: cover;
+}
+
+.passengers > h2{
+  margin:0;
+}
+
 .prices{
   display: flex;
   justify-content: center;
 }
+
+.prices > h3 {
+  margin: 0;
+}
+
 
 .modalTop{
   display: flex;
