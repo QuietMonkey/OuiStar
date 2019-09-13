@@ -12,14 +12,37 @@
   display: flex;
   justify-content: space-between;
   height: 8vh;
-  background: rgba(230, 230, 230, 0.7);
+  background: rgba(210, 210, 210);
   align-items: center;
 }
 
-.header > input{
+.inputSearch{
   height: 50%;
-  margin: 22px;
+  margin: 19px;
+  border-radius: 8px;
 } 
+
+.spaceShips{
+  background-image: url(https://sacredicon.files.wordpress.com/2019/02/starfighters-e1549479582387.jpg?w=789);
+    background-color: rgba(210, 210, 210);
+    background-size: cover;
+    height: 100%;
+    width: 766px;
+    background-blend-mode: screen;
+    background-position-y: -25px;
+    background-repeat: repeat-y;
+    animation: spaceShipsY 6s ease-in-out infinite;
+}
+
+@keyframes spaceShipsY{
+  0%{
+    background-position-y: -25px;
+  }
+
+  100%{
+    background-position-y: -316px;
+  }
+}
 
 .logo{
   margin-right: 22px;
@@ -28,7 +51,7 @@
 .logo > h1{
   margin: 0px;
   font-size: 55px;
-  background: linear-gradient(135deg, #efc5ca 0%,#d24b5a 50%,#ba2737 51%,#f18e99 100%);;
+  background: linear-gradient(135deg, #efc5ca 0%,#d24b5a 50%,#ba2737 51%,#f18e99 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   height: 47px;
@@ -203,7 +226,7 @@
 }
 
 .modalCard{
-  width: 18vw;
+  width: 22vw;
   height: 22vh;
   margin-top: 8%;
 }

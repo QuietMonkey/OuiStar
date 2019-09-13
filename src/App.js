@@ -100,7 +100,8 @@ class App extends Component {
     return (
       <div className="App">
         <div className='header'>
-          <input onChange={this.handleSearch} placeholder='Search by name..'></input>
+          <input className='inputSearch' onChange={this.handleSearch} placeholder='Search by name..'></input>
+          <span className='spaceShips'></span>
           <div className='logo'>
             <h1>WE.STAR</h1>
             <h2>THE BEST OF THE REBELLION</h2>
