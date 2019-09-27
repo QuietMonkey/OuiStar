@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Modal from 'react-responsive-modal'
+import { I18n, translate } from 'react-polyglot'
 
 import './App.css'
+import LocaleContext from './context/locale'
 
 import Vehicles from './components/Vehicles'
 import Basket from './components/Basket'
 import ModalVehicle from './components/ModalVehicle'
+
 
 class App extends Component {
   state = {
@@ -14,8 +17,12 @@ class App extends Component {
     vehicles: [],
     displayVehicles: [],
     selectedVehicle: [],
-    basketOrder: []
+    basketOrder: [],
+    locale: 'en',
+    text: {}
   }
+
+  
 
   getVehicles = async (scope) => {
     let arrayResults = []
@@ -61,6 +68,11 @@ class App extends Component {
 
   componentDidMount = () => {
     this.getVehicles()
+    this.getLocale()
+  }
+
+  componentDidUpdate = () => {
+    this.getLocale()
   }
 
   handleClickRent = async (nameVehicle, priceVehicle) => {
@@ -95,45 +107,67 @@ class App extends Component {
     this.setState({ displayVehicles: results })
   }
 
+  handleChangeLocale = (e) => {
+    this.setState({ locale: e.target.value })
+  }
+
+  getLocale = async() => {
+      const result = await axios.get(`/translations/${this.state.locale}.json`)
+      // In a real app, you should consider caching the results in an object.
+      // To prevent requests for same locale again.
+      this.setState({ text: result.data })
+  }
+
 
   render() {
-    console.log(this.state)
 
     return (
-      <div className="App">
+      <LocaleContext.Provider value={this.state.locale}>
+        <I18n locale={this.state.locale} text={this.state.text}>
 
-        <div className='header'>
-          <input className='inputSearch' onChange={this.handleSearch} placeholder='Search by name..'></input>
-          <span className='spaceShips'></span>
+          <div className="App">
+            <div className='header'>
+              <input className='inputSearch' onChange={this.handleSearch} placeholder='Search by name..'></input>
+              <img src={`/flags/${this.state.locale}.svg`} alt={`Flag of ${this.state.locale}`} width="15px" />
+              <select onChange={this.handleChangeLocale}>
+                <option value="en">English</option>
+                <option value="fr">French</option>
+              </select>
 
-          <div className='logo'>
-            <h1>WE.STAR</h1>
-            <h2>THE BEST OF THE REBELLION</h2>
+              <span className='spaceShips'></span>
+
+              <div className='logo'>
+                <h1>{this.state.text.logo}</h1>
+                <h2>{this.state.text.textLogo}</h2>
+              </div>
+
+            </div>
+
+            <div className='content'>
+              <Modal open={this.state.open} onClose={this.onCloseModal} center>
+
+                <ModalVehicle name={this.state.selectedVehicle.name}
+                  model={this.state.selectedVehicle.model}
+                  type={this.state.selectedVehicle.vehicle_class}
+                  length={this.state.selectedVehicle.length}
+                  manufacturer={this.state.selectedVehicle.manufacturer}
+                  passenger={this.state.selectedVehicle.passengers}
+                  crew={this.state.selectedVehicle.crew}
+                  speed={this.state.selectedVehicle.max_atmosphering_speed}
+                  autonomy={this.state.selectedVehicle.consumables}
+                  price={this.state.selectedVehicle.cost_in_credits}
+                  handleClick={this.handleClickRent}
+                />
+
+              </Modal>
+
+              <Vehicles data={this.state.displayVehicles} openModal={this.onOpenModal} />
+              <Basket data={this.state.basketOrder} handleClick={this.handleClickCancel} />
+            </div>
           </div>
 
-        </div>
-
-        <div className='content'>
-          <Modal open={this.state.open} onClose={this.onCloseModal} center>
-
-            <ModalVehicle name={this.state.selectedVehicle.name}
-              model={this.state.selectedVehicle.model}
-              type={this.state.selectedVehicle.vehicle_class}
-              length={this.state.selectedVehicle.length}
-              manufacturer={this.state.selectedVehicle.manufacturer}
-              passenger={this.state.selectedVehicle.passengers}
-              crew={this.state.selectedVehicle.crew}
-              speed={this.state.selectedVehicle.max_atmosphering_speed}
-              autonomy={this.state.selectedVehicle.consumables}
-              price={this.state.selectedVehicle.cost_in_credits}
-              handleClick={this.handleClickRent} />
-              
-          </Modal>
-
-          <Vehicles data={this.state.displayVehicles} openModal={this.onOpenModal} />
-          <Basket data={this.state.basketOrder} handleClick={this.handleClickCancel} />
-        </div>
-      </div>
+        </I18n>
+      </LocaleContext.Provider>
     )
   }
 }
