@@ -9,6 +9,7 @@ import LocaleContext from './context/locale'
 import Vehicles from './components/Vehicles'
 import Basket from './components/Basket'
 import ModalVehicle from './components/ModalVehicle'
+import Logo from './localDisplays/Logo'
 
 
 class App extends Component {
@@ -123,7 +124,7 @@ class App extends Component {
 
     return (
       <LocaleContext.Provider value={this.state.locale}>
-        <I18n locale={this.state.locale} text={this.state.text}>
+        <I18n locale={this.state.locale} messages={this.state.text}>
 
           <div className="App">
             <div className='header'>
@@ -136,10 +137,7 @@ class App extends Component {
 
               <span className='spaceShips'></span>
 
-              <div className='logo'>
-                <h1>{this.state.text.logo}</h1>
-                <h2>{this.state.text.textLogo}</h2>
-              </div>
+              <Logo />
 
             </div>
 
