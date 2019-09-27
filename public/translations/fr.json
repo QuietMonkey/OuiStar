@@ -1,5 +1,7 @@
 {
   "welcomeMessage": "Bienvenue.",
   "logo": "OUI.STAR",
-  "textLogo": "LE MEILLEUR DE LA REBELLION"
+  "textLogo": "LE MEILLEUR DE LA REBELLION",
+  "searchHolder": "Recherche par nom",
+  "totalPrice": "Prix Total:"
 }

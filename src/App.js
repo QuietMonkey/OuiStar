@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Modal from 'react-responsive-modal'
-import { I18n, translate } from 'react-polyglot'
+import { I18n, translate, useTranslate } from 'react-polyglot'
 
 import './App.css'
 import LocaleContext from './context/locale'
@@ -118,17 +118,14 @@ class App extends Component {
       // To prevent requests for same locale again.
       this.setState({ text: result.data })
   }
-
-
+  
   render() {
 
     return (
-      <LocaleContext.Provider value={this.state.locale}>
         <I18n locale={this.state.locale} messages={this.state.text}>
-
           <div className="App">
             <div className='header'>
-              <input className='inputSearch' onChange={this.handleSearch} placeholder='Search by name..'></input>
+              <input className='inputSearch' onChange={this.handleSearch} placeholder={this.state.text.searchHolder} ></input>
               <img src={`/flags/${this.state.locale}.svg`} alt={`Flag of ${this.state.locale}`} width="15px" />
               <select onChange={this.handleChangeLocale}>
                 <option value="en">English</option>
@@ -163,11 +160,9 @@ class App extends Component {
               <Basket data={this.state.basketOrder} handleClick={this.handleClickCancel} />
             </div>
           </div>
-
         </I18n>
-      </LocaleContext.Provider>
     )
   }
 }
 
-export default App
+export default translate()(App)

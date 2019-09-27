@@ -1,5 +1,7 @@
 {
   "welcomeMessage": "Welcome.",
   "logo": "WE.STAR",
-  "textLogo": "THE BEST OF THE REBELLION"
+  "textLogo": "THE BEST OF THE REBELLION",
+  "searchHolder": "Search by name..",
+  "totalPrice": "Total Price:"
 }
