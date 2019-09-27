@@ -118,6 +118,12 @@ class App extends Component {
       // To prevent requests for same locale again.
       this.setState({ text: result.data })
   }
+
+  renderLocalPlaceHolder = () => {
+    const t = useTranslate()
+    const placeholder = t('searchHolder')
+    return placeholder
+  }
   
   render() {
 
