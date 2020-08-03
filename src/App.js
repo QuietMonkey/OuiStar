@@ -34,16 +34,16 @@ class App extends Component {
     //     console.error(error)
     //   }
 
-    const response = await axios.get('https://swapi.co/api/vehicles/?page=1')
+    const response = await axios.get('https://swapi.dev/api/vehicles/?page=1')
     this.createUnikArray(response.data.results, arrayResults)
 
-    const response2 = await axios.get('https://swapi.co/api/vehicles/?page=2')
+    const response2 = await axios.get('https://swapi.dev/api/vehicles/?page=2')
     this.createUnikArray(response2.data.results, arrayResults)
 
-    const response3 = await axios.get('https://swapi.co/api/vehicles/?page=3')
+    const response3 = await axios.get('https://swapi.dev/api/vehicles/?page=3')
     this.createUnikArray(response3.data.results, arrayResults)
 
-    const response4 = await axios.get('https://swapi.co/api/vehicles/?page=4')
+    const response4 = await axios.get('https://swapi.dev/api/vehicles/?page=4')
     this.createUnikArray(response4.data.results, arrayResults)
     arrayResults.splice(arrayResults.length - 3, 3)
     this.setState({ vehicles: arrayResults })
